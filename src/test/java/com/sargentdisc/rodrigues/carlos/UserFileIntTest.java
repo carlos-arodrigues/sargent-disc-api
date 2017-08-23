@@ -10,12 +10,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.sargentdisc.domain.model.userfile.UserFile;
@@ -63,6 +68,17 @@ public class UserFileIntTest extends SpringTest {
 		configureUrl("/api/v1/userfile/");
 		List<LinkedHashMap<String, Object>> list = this.restTemplate.getForObject(url, List.class);
 		Assert.assertEquals(2, list.size());
+	}	
+	
+	@Test
+	public void should_save_the_file_processed() throws IOException {
+		UserFile userFile = UserFile.named("Thomas").withLocation("London").withText("Test").build();
+		configureUrl("/api/v1/userfile/");
+		HttpHeaders requestHeaders = new HttpHeaders();
+		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<?> requestEntity = new HttpEntity<Object>(userFile, requestHeaders);
+		ResponseEntity<UserFile> response = new RestTemplate().exchange(url, HttpMethod.POST, requestEntity, UserFile.class);
+		Assert.assertNotNull(response.getBody());
 	}		
 	
 	
