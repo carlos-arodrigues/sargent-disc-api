@@ -18,8 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.sargentdisc.rodrigues.carlos.domain.userfile.UserFile;
-
+import com.sargentdisc.domain.model.userfile.UserFile;
 
 public class UserFileIntTest extends SpringTest {
 

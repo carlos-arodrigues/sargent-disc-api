@@ -18,9 +18,9 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sargentdisc.domain.model.userfile.UserFile;
 import com.sargentdisc.rodrigues.carlos.bundle.MessageBundle;
-import com.sargentdisc.rodrigues.carlos.domain.userfile.UserFile;
-
+	
 /**
  * 
  * @author carlos
