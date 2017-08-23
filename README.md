@@ -13,8 +13,8 @@ Text  (String)
 ## Running the tests
 
 * To test just execute as JUnit the classes 
--DiffUnitTest for rule tests.
--DiffIntTest for integration tests.
+-UserFileUnitTest for rule tests.
+-UserFileIntTest for integration tests.
 
 ## Deployment
 
